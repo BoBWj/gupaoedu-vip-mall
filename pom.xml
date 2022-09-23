@@ -14,7 +14,7 @@
         <module>mall-util</module>
         <module>mall-web</module>
         <module>mall-util/mall-common</module>
-        <!--        <module>mall-service-dependency</module>-->
+
     </modules>
     <name>gupaoedu-vip-mall</name>
     <description>Demo project for Spring Boot</description>
