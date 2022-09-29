@@ -4,6 +4,7 @@ package com.gupaoedu.vip.mall.controller;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.gupao.edu.vip.com.gupaoedu.mall.util.RespResult;
 import com.gupaoedu.mall.goods.model.Brank;
+import com.gupaoedu.mall.goods.model.Category;
 import com.gupaoedu.vip.mall.service.BrankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -75,6 +76,17 @@ public class BrankController {
 
         return RespResult.ok(pageInfo);
 
+
+    }
+
+    /**
+     * 根据分类id查询品牌集合
+     */
+    @GetMapping("/category/{pid}")
+    public RespResult<List<Category>> categoryBrands (@PathVariable(value = "pid") Integer pid){
+
+        List<Brank> branks=brankService.queryBrankByCategoryId(pid);
+        return RespResult.ok(branks);
 
     }
 }

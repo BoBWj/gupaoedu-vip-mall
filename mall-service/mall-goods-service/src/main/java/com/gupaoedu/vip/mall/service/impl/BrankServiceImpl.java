@@ -54,4 +54,21 @@ public class BrankServiceImpl extends ServiceImpl<BrandMapper, Brank> implements
                         .like("name", brank.getName()));
         return page;
     }
+
+    /**
+     * 根据分类ID查询品牌集合
+     * @param id(分类id)
+     * @return
+     */
+    @Override
+    public List<Brank> queryBrankByCategoryId(Integer id) {
+        //根据分类ID查询品牌ID集合
+        List<Integer> brandIds=brandMapper.queryBrandIds(id);
+        //根据品牌ID查询品牌集合
+        if (brandIds !=null &&brandIds.size()>0){
+            return brandMapper.selectList(new QueryWrapper<Brank>().in("id",brandIds));
+        }
+        //
+        return null;
+    }
 }
